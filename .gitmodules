@@ -1,0 +1,6 @@
+[submodule "p5js-osc"]
+	path = p5js-osc
+	url = https://github.com/genekogan/p5js-osc
+[submodule "p5.js-speech"]
+	path = p5.js-speech
+	url = https://github.com/IDMNYU/p5.js-speech
