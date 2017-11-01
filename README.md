@@ -5,7 +5,7 @@ A workshop and demo exploring artistic applications of smart home technologies. 
 
 ## Details
 
-Instructor: Robert Twomey ([website](http://roberttwomey.com))
+Instructor: [Robert Twomey](mailto:robert@roberttwomey.com) ([website](http://roberttwomey.com))
 
 Talk:	10-11am
 
@@ -85,24 +85,44 @@ Physical outputs, speech synthesis, dot matrix printers, screens
 ## Provisioning
 
 
-Trash
+Reference
 =====
 
-## Software Setup
-Setup Particle Photon
+## Serving P5.js on localhost
+
+1. Setup local [HTTP server](https://www.npmjs.com/package/http-server):
+
+`npm install http-server -g`
+
+2. Change directory to path of your program, f.ex.:
+
+`cd housemachine-workshop\browser-speechrec`
+
+3. Run the server:
+
+`http-server`
+
+4. Open your browser to view the page and run the sketch. Open address:
+
+`http://localhost.com:8080`
+
+
+Leftovers
+=======
+
+## Compiling and uploading code to Particle Photon
+I am using a simplified "firmata-like" program running on the particle photon. You are able to configure this program somewhat through OSC commands. 
+
+The instructions below are for compiling and uploading code directly to the Particle Photon over USB. This circumvents the usual particle cloud compile and upload process. There is also some way to set up a local cloud to communicate with the Photon.
+
+1. Setup Particle Photon
 From https://docs.particle.io/guide/getting-started/connect/core/
 
-**1. Installing Node.js**
+2. Installing Node.js
 
-The Particle CLI runs with Node.js. 
+The Particle CLI runs with Node.js. Grab the latest version from [the Node.js website](https://nodejs.org/en/download/) Launch the installer and follow the instructions to install node.js. Next, open your terminal, or preferred terminal program.
 
-Grab the latest version from [the Node.js website](https://nodejs.org/en/download/)
-
-Launch the installer and follow the instructions to install node.js.
-
-Next, open your terminal, or preferred terminal program.
-
-**2. Installing the Particle CLI**
+3. Installing the Particle CLI
 
 Type: `npm install -g particle-cli`
 
@@ -118,3 +138,5 @@ Note: You may need to update xcode at this time.
 ## Logging Data
 
 ## Data Analysis
+
+
