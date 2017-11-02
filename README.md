@@ -16,6 +16,66 @@ Date: Friday Nov 4, 2017
 Location: [CMU STUDIO for Creative Inquiry](http://studioforcreativeinquiry.org/)
 
 
+Setup
+=====
+
+## Install Software
+
+* SuperCollider: http://supercollider.github.io/
+* Particle Photon CLI: https://docs.particle.io/guide/getting-started/connect/core/
+* A text editor like [Sublime](https://www.sublimetext.com/) or [Atom](https://atom.io/). I will use sublime for this workshop.
+
+
+## Upload a simple program to the Particle Photon
+
+*
+*
+*
+
+## Communicating with the Photon
+### Connect to WiFI
+
+ssid: 'housemachine'
+pwd: 2029973952
+
+### Run the server program
+
+### Testing and naming a photon
+
+Power on the photon by plugging in an AC adapter. Set a new name for your photon.
+
+!! make an app for renaming photon with python(?) !!
+
+
+### Detect the Photon when it goes live
+
+* With supercollider
+
+#### alternatively, through p5.js or processing
+
+
+## Read Sensor Data from Photon
+
+Data logging
+Processing data
+
+## Send Commands to Photon
+
+Physical outputs, speech synthesis, dot matrix printers, screens
+
+## Brainstorm on uses of wireless sensor technology
+
+
+## Try it
+
+Issues with physically staging the photon
+
+## Going Further
+
+* Developing with the Particle Photon locally
+* Other Client/Server possibilities with Particle
+
+
 Technologies
 ========
 
@@ -47,42 +107,6 @@ Technologies
 
 Schedule
 ========
-
-## Connect to WiFI
-
-ssid: 'housemachine'
-pwd: 2029973952
-
-## Run the server program
-
-## Testing and naming a photon
-
-Power on the photon by plugging in an AC adapter. Set a new name for your photon.
-
-!! make an app for renaming photon with python(?) !!
-
-## Physically staging the photon
-
-## Simple sensing / receiving setup
-
-
-
-## Data logging
-
-## Outputs
-
-Physical outputs, speech synthesis, dot matrix printers, screens
-
-## Processing data
-
-
-## Going Further
-
-* Developing with the Particle Photon locally
-* Other Client/Server possibilities with Particle
-* 
-
-## Provisioning
 
 
 Reference
@@ -131,12 +155,5 @@ Note: You may need to update xcode at this time.
 
 ## Upload your first program
 
-## Receiving Messages
-
-## Triggering Responses
-
-## Logging Data
-
-## Data Analysis
 
 
