@@ -1,9 +1,22 @@
-//  housemachine-workshop | Robert Twomey | rtwomey@ysu.edu 2017-11-03
+// Robert Twomey | 2017-11-03
+// rtwomey@ysu.edu
 //
-//    SC Code to work with Partice Photon processors, OSC messaging
+//  photon_server.scd
 //
-//    run each of the following sections below (cmd-Enter to execute code)
+//  from the housemachine-workshop @ CMU
+//
+//  Description:
+//  - this program is supercollider code to work with Partice Photon processors and OSC messaging
+//
+//   Directions:
+//   - run each of the following sections below
+//      (highlight and hit cmd-Enter to execute code)
 
+
+
+// ======================
+// A. SETUP SERVER AND DATA LOGGING
+// ======================
 
 // 1. Start the Server
 (
@@ -12,11 +25,12 @@ s.boot;
 ~bDoLogging = false;
 )
 
-pwd
+
 // 2. Set up log files
 (
-// set up log files, and periodic log routine to start new file
 ~bDoLogging = false;
+
+// change ~datapath below to something appropriate for your computer
 ~datapath = "/Users/rtwomey/Desktop/logs/";
 // ~datapath  = Document.current.path + "/logs/";
 
@@ -110,26 +124,30 @@ pwd
 )
 
 
-// ===============
-// BROADCAST ADDRESSES
-// ===============
-// configure with broadcast addresses
+
+// =======================
+// B. COMMUNICATING WITH PHOTONS
+// =======================
+
+// 1. using broadcast addresses to communicate with the photons
 
 NetAddr.broadcastFlag = true;
 m = NetAddr("192.168.1.255", 8888);
 
+// query node info
+m.sendMsg("/getnodeinfo");
+
+
+// setting server ip (this will change for all particles)
 m.sendMsg("/setserverip", 192, 168, 1, 10); //blackbox
 m.sendMsg("/setserverip", 192, 168, 1, 20); //laptop
 
+// reading and writing settings, like node name
 m.sendMsg("/writeeeprom");
 m.sendMsg("/readeeprom");
 
-m.sendMsg("/getnodeinfo");
 
-// ===============
-
-
-// configuring/controlling photon
+// 2. communicating with individual photon
 m = NetAddr("192.168.1.104", 8888);
 m.sendMsg("/led", 7, 1); // on
 m.sendMsg("/led", 7, 0); // on
@@ -137,6 +155,9 @@ m.sendMsg("/led", 7, 0); // on
 m.sendMsg("/analogpin", 1, 100, "/toilet"); // on
 m.sendMsg("/led", 7, 1); // on
 m.sendMsg("/led", 7, 0); // off
+
+m.sendMsg("/setnotify", 7, 0);
+m.sendMsg("/settrigger", 7, 0);
 
 m.sendMsg("/setnodeid", "/toilet");
 
@@ -233,5 +254,6 @@ n.sendMsg("/chair", 0);
 OSCFunc.trace(true, false)
 OSCFunc.trace(true, true)
 OSCFunc.trace(false, true)
+OSCFunc.trace(false, false)
 
 "ssh pi@narrator.local 'festival --tts soft_rains.txt'".unixCmdGetStdOut

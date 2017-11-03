@@ -109,18 +109,19 @@ When done building the firmware, it will upload to the particle. It will do two 
 
 ### Compile and upload your application:
 1. Write your application
-2. Link it to the firmware/applications/ directory:
 
-`ln -s path/to/myApplication firmware/applications/myApplication`
+2. Link it to the firmware/user/applications/ directory:
+
+`ln -s path/to/myApplication firmware/user/applications/myApplication`
 
 3. From the particle firmware directory, change to main:
 
 `cd firmware/main`
 
 4. Place the particle in DFU mode ([see above](#dfu-mode))
-5. Compile and upload your application (f.ex., mine is called "housenode"):
+5. Compile and upload your application (f.ex., mine is called "helloosc"):
 
-`make PLATFORM=photon APP=housenode program-dfu`
+`make PLATFORM=photon APP=helloosc program-dfu`
 
 
 
