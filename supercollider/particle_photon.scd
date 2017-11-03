@@ -1,18 +1,25 @@
+//  housemachine-workshop | Robert Twomey | rtwomey@ysu.edu 2017-11-03
+//
+//    SC Code to work with Partice Photon processors, OSC messaging
+//
+//    run each of the following sections below (cmd-Enter to execute code)
 
+
+// 1. Start the Server
 (
 s = Server.default;
 s.boot;
 ~bDoLogging = false;
 )
 
-
+pwd
+// 2. Set up log files
 (
-
 // set up log files, and periodic log routine to start new file
-
 ~bDoLogging = false;
-// ~datapath = "/home/rtwomey/housemachine/data/logs/";
-~datapath = "/Users/rtwomey/housemachine/data/logs/";
+~datapath = "/Users/rtwomey/Desktop/logs/";
+// ~datapath  = Document.current.path + "/logs/";
+
 
 ~logroutine = Routine( {
 	inf.do {
@@ -40,6 +47,8 @@ s.boot;
 
 ~logroutine.free();
 
+
+// 3. Create OSC Responders
 (
 // OSC responders
 ~pathkeys = [ \piezo, \chair, \door, \table, \toilet, \washingmachine, \motion, \frontoor, \humidity, \occupancy, \temperature, \shower, \microwave, \announce, \debug, \particleip, \nodeid, \nodeinfo, \testbundle, \digitalpins, \analogpins, \digitalpin, \analogpin, \dht11];
@@ -49,6 +58,7 @@ s.boot;
 ~pathkeys.do { |path|
 	var thisaddr = '/'++path;
 	// path.postln;
+
 	~oscfuncs.put(path,
 		[{|msg, time, addr, recvPort|
 			var thisDate, thisSeconds, tstampstring, msgstring, addrstring;
@@ -60,11 +70,8 @@ s.boot;
 			thisSeconds = "%.%".format(thisDate.second.asString.padLeft(2, "0"), thisDate.rawSeconds.frac.trunc(1e-4).asString.padRight(6, "0").split($.)[1]);
 			tstampstring = thisDate.format("%H:%M:")++thisSeconds;
 
-			// nowSeconds = Date.getDate.rawSeconds - ~startTime;
-			// tstampstring =
-
-			// [msg, time, addr, recvPort].postln;
 			[tstampstring, msg, addrstring, recvPort].postln;
+			// [msg, time, addr, recvPort].postln;
 			// [tstampstring, msg.reverse, addrstring, recvPort].postln;
 			~bDoLogging.if {
 				~logfile.write( "%\t%\t%\t%\n".format(tstampstring, msgstring, addrstring, recvPort) );
@@ -75,10 +82,6 @@ s.boot;
 	thisaddr.asSymbol]);
 	thisaddr.postln;
 };
-
-
-// ~oscfuncs.do{ | func | func.remove };
-//oscFuncs.postln;
 
 ~oscresponders = ();
 
@@ -91,17 +94,13 @@ s.boot;
 	~oscresponders.put(key, OSCFunc.newMatching(func, addr, recvPort: 9999));
 
 };
-
-
 )
 
 ~logroutine.play()
-
 ~logroutine.stop()
 
 
-
-// receiving messages from photon
+// stop receiving messages from photon
 (
 
 ~bDoLogging = false;
@@ -111,20 +110,11 @@ s.boot;
 )
 
 
-// printer stuff
-m = NetAddr("192.168.1.10", 9999); //
-m.sendMsg("/print", 1);
-m.sendMsg("/print", 0);
-m.sendMsg("/log", 1);
-m.sendMsg("/log", 0);
-
-m = NetAddr("192.168.1.103", 8888);
-
-
 // ===============
 // BROADCAST ADDRESSES
 // ===============
 // configure with broadcast addresses
+
 NetAddr.broadcastFlag = true;
 m = NetAddr("192.168.1.255", 8888);
 
@@ -139,8 +129,8 @@ m.sendMsg("/getnodeinfo");
 // ===============
 
 
-// photon stuff
-m = NetAddr("192.168.1.109", 8888);
+// configuring/controlling photon
+m = NetAddr("192.168.1.104", 8888);
 m.sendMsg("/led", 7, 1); // on
 m.sendMsg("/led", 7, 0); // on
 
