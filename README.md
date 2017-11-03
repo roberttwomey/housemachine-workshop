@@ -12,26 +12,34 @@ A workshop and demo exploring artistic applications of smart home technologies. 
 
 ## Demos
 
-1. Audionode demo: machine Listener, "voice" triggered recording with webrtcVAD
-2. Videonode demo: machine observer, motion triggered recording with pikrellcam
-3. Physical Sensor
+1. Audionode demo:
+   * Machine Listener, "voice" triggered recording with webrtcVAD
+   * vadnode.py on pi0.local
+2. Videonode demo:
+   * Machine observer, motion triggered recording with pikrellcam
+   * pikrellcam on studio.local
+3. Physical Sensors
+   * particle photon
 4. Audio analysis:
    * feature analysis (SCMIR or librosa)
    * clustering (k-Means, HDBSCAN)
    * visualization 
-   * Google TTS, Kaldi, CMU Sphinx
+   * housemachine/data/audioanalysis/hours
+   * Google TTS, Kaldi, CMU Sphinx housemachine/data/speech/google
 5. Video analysis:
-   * Background subtraction (KNN, MOG, etc) with OpenCV
-   * inhabitance maps
-   * ROIs (future directions)
+   * Background subtraction (KNN, MOG, etc) with OpenCV housemachine/data/cv/clips
+   * inhabitance maps housemachine/data/cv/json
+   * ROIs (future directions, f.ex. with moose) 
 6. Sensor analysis
-   * cleaning data
+   * cleaning data housemachine/data/time/sensor_times_clean.png
    * meaningful filtering, clustering, etc (future directions)
 7. Representational strategies
-   * audio synthesis 
-   * video synthesis
+   * audio synthesis housemachine/supercollider/audio_sandbox/tsne_scmir_GUI_previewer.scd
+   * video synthesis housemachine/data/one_day/
    * sensor narrative
    * speech transcripts
+   * drawings
+   * sculpture/installation
    * robotic re-embodiment
 
 ## Workshop
@@ -130,22 +138,24 @@ Select the housemachine network:
 ### Run the server program
 The server program in either supercollider, p5, processing or python will listen for broadcast messages on the local network. When a particle turns on it will announce it's presence.
 
-We will start with the supercollider program, housemachin
+We will start with the supercollider program, [supercollider/photon_server.scd](supercollider/photon_server.scd)
+
 
 ### Detect the Photon when it goes live
 1. Power on the photon by plugging in an AC adapter. It will go through it's startup routine. When it finally connects to the network, it should show a slow green pulse.
-2. Did your server program see the announce message? If so, what is the IP address and name for the photon?
 
+2. Did your server program see the announce message? If so, what is the IP address and name for the photon?f
 
 ### Renaming your photon
 
-Set a new name for your photon.
+Set a new name for your photon. Either modify the code of helloosc.cpp, or switch to the housenode program and configure with messages from supercollider.
+
 ### Read Sensor Data from Photon
 Data logging
 Processing data
 
 ### Send Commands to Photon
-Physical outputs, speech synthesis, dot matrix printers, screens
+Actuators, physical outputs. F.ex. control a relay. 
 
 ### Physically staging the photon
 How do we attach our sensors to things?
@@ -161,12 +171,12 @@ How can we use these wireless sensors?
 ### Try it
 
 ## Going Further
-* Using the Tinker app
+* Using the [Tinker app](https://docs.particle.io/guide/getting-started/tinker/core/)
 * Using the Particle [Desktop IDE](https://docs.particle.io/guide/tools-and-features/dev/#getting-started)
-* Other Client/Server possibilities with Particle
+* Other Client/Server possibilities with particle
 * Bluetooth sensors for true wireless applications, f.ex. [Lightblue Bean](https://store.punchthrough.com/collections/bean-family/products/bean)
 * Interfacing with existing services: [Amazon Alexa](https://developer.amazon.com/alexa-voice-service/dev-kits), Google Home, [Google Voice](https://aiyprojects.withgoogle.com/voice), others.
 * Wearables
-* Mesh networks
+* 
 
 
