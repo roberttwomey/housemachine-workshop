@@ -174,9 +174,8 @@ How can we use these wireless sensors?
 * Using the [Tinker app](https://docs.particle.io/guide/getting-started/tinker/core/)
 * Using the Particle [Desktop IDE](https://docs.particle.io/guide/tools-and-features/dev/#getting-started)
 * Other Client/Server possibilities with particle
-* Bluetooth sensors for true wireless applications, f.ex. [Lightblue Bean](https://store.punchthrough.com/collections/bean-family/products/bean)
 * Interfacing with existing services: [Amazon Alexa](https://developer.amazon.com/alexa-voice-service/dev-kits), Google Home, [Google Voice](https://aiyprojects.withgoogle.com/voice), others.
+* Bluetooth sensors for true wireless applications, f.ex. [Lightblue Bean](https://store.punchthrough.com/collections/bean-family/products/bean)
 * Wearables
-* 
 
 
