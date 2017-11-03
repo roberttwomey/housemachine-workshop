@@ -67,6 +67,20 @@ void setLEDStatus(OSCMessage &mess)
 	}
 }
 
+void sendPinOSC(const char *addr, int thisPin, int thisVal)
+{
+	OSCMessage pinMsg(addr);
+
+	pinMsg.add(thisPin);
+	pinMsg.add(thisVal);
+	pinMsg.add(nodeid);
+
+	Udp.beginPacket(serverAddress, serverPort);
+	pinMsg.send(Udp); // send the bytes
+	Udp.endPacket();
+	pinMsg.empty(); // empty the message to free room for a new one
+}
+
 // ============================================================ //
 // ==== setup
 // ============================================================ //

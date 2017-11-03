@@ -12,17 +12,15 @@ A workshop and demo exploring artistic applications of smart home technologies. 
 
 ## Demos
 
-1. Machine Listener
-   * "voice" triggered recording with webrtcVAD
-2. Machine Watcher
-   * motion triggered recording with pikrellcam
+1. Audionode demo: machine Listener, "voice" triggered recording with webrtcVAD
+2. Videonode demo: machine observer, motion triggered recording with pikrellcam
 3. Physical Sensor
-4. Audio Analysis
+4. Audio analysis:
    * feature analysis (SCMIR or librosa)
    * clustering (k-Means, HDBSCAN)
    * visualization 
    * Google TTS, Kaldi, CMU Sphinx
-5. Video analysis
+5. Video analysis:
    * Background subtraction (KNN, MOG, etc) with OpenCV
    * inhabitance maps
    * ROIs (future directions)
@@ -30,7 +28,7 @@ A workshop and demo exploring artistic applications of smart home technologies. 
    * cleaning data
    * meaningful filtering, clustering, etc (future directions)
 7. Representational strategies
-   * audio synthesis
+   * audio synthesis 
    * video synthesis
    * sensor narrative
    * speech transcripts
@@ -97,7 +95,7 @@ The indicator ight should be flashing yellow. This means it is ready to upload n
 
 1. Change directory to the particle firmware modules:
 
-`cd modules`
+`cd firmware/modules`
 
 2. Place the particle in DFU mode ([see above](#dfu-mode))
 
@@ -107,23 +105,21 @@ The indicator ight should be flashing yellow. This means it is ready to upload n
 
 When done building the firmware, it will upload to the particle. It will do two separate uploads. You will see it cycle back to blinking yellow DFU mode twice.
 
-### Compile and upload your application:
-1. Write your application
+### Compile and upload your program:
+1. Write your program or use an existing one (f.ex. [particle/helloosc](particle/helloosc))
 
-2. Link it to the firmware/user/applications/ directory:
+2. Link the folder with your program to the firmware/user/applications/ directory:
 
-`ln -s path/to/myApplication firmware/user/applications/myApplication`
+`ln -s path/to/housemachine-workshop/particle/helloosc firmware/user/applications/`
 
 3. From the particle firmware directory, change to main:
 
 `cd firmware/main`
 
 4. Place the particle in DFU mode ([see above](#dfu-mode))
-5. Compile and upload your application (f.ex., mine is called "helloosc"):
+5. Compile and upload your application (f.ex., to compile helloosc):
 
 `make PLATFORM=photon APP=helloosc program-dfu`
-
-
 
 ## Communicating with the Photon
 ### Connect to the local WiFi network
@@ -133,6 +129,8 @@ Select the housemachine network:
 
 ### Run the server program
 The server program in either supercollider, p5, processing or python will listen for broadcast messages on the local network. When a particle turns on it will announce it's presence.
+
+We will start with the supercollider program, housemachin
 
 ### Detect the Photon when it goes live
 1. Power on the photon by plugging in an AC adapter. It will go through it's startup routine. When it finally connects to the network, it should show a slow green pulse.
